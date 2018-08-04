@@ -19,5 +19,6 @@ __pycache__/
 local_settings.py
 
 .env
-db.sqlite
+db.sqlite3
+
 venv/
