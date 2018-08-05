@@ -30,7 +30,7 @@ Production::
 
     $ docker-compose build
     $ docker-compose up
-
+;
 
 For your use only::
 
