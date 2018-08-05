@@ -2,6 +2,7 @@ from django.test import TestCase
 from api.models import Endpoint
 from django.utils import timezone
 from django.urls import reverse
+from .forms import EndpointForm
 # Create your tests here.
 
 
@@ -51,7 +52,7 @@ class EndpointModelTest(TestCase):
         self.assertEqual(str(endpoint), endpoint.url)
 
 
-# View test
+# Views test
 class WelcomeViewTest(TestCase):
 
     def test_homepage(self):
@@ -69,3 +70,21 @@ class ListViewTest(TestCase):
         response = self.client.get('/endpoint/list')
         self.assertContains(response, 'abc')
         self.assertContains(response, 'GET')
+
+
+# Forms test
+class EndpointFormTest(TestCase):
+
+    def setUp(self):
+        self.entry = Endpoint.objects.create(
+                    url='abc', verb='GET', response_code='200',
+                    content_type='json', encoding='utf-8',
+                    body="yes, this is only a test")
+
+    # TODO
+    # def test_init(self):
+    #     EndpointForm(entry=self.entry)
+
+    # def test_init_without_entry(self):
+    #     with self.assertRaises(KeyError):
+    #         EndpointForm()
