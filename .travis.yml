@@ -1,8 +1,15 @@
 language: python
+
 python:
   - "3.6"
+
 install:
   - pip install -r requirements.txt
+
 script:
   - python APIable/manage.py migrate
-  - python APIable/manage.py test
+  - coverage run --source=. APIable/manage.py test api
+
+# run coveralls after successful tests
+after_success:
+- coveralls
