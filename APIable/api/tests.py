@@ -57,3 +57,15 @@ class WelcomeViewTest(TestCase):
     def test_homepage(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
+
+
+class ListViewTest(TestCase):
+
+    def test_one_entry(self):
+        Endpoint.objects.create(
+            url='abc', verb='GET', response_code='200',
+            content_type='json', encoding='utf-8',
+            body="yes, this is only a test")
+        response = self.client.get('/endpoint/list')
+        self.assertContains(response, 'abc')
+        self.assertContains(response, 'GET')
