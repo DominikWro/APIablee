@@ -13,7 +13,7 @@ Usage
 
 First, get APIable. Trust me, it's awesome::
 
-    $ git clone https://github.com/DominikWro/APIable.git
+    $ git clone https://github.com/DominikWro/APIable.git .
 
 Production ready config is based on this article
 http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html
@@ -29,6 +29,6 @@ Production::
 
 For your use only::
 
-    $ cd /folder
+    $ cd /app_folder
     $ python manage.py migrate
     $ python manage.py runserver
