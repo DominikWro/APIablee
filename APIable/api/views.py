@@ -18,7 +18,7 @@ class Endpoint_List(View):
 
 class Create_Endpoint(FormView):
     template_name = 'api/endpoint_edit.html'
-    success_url = '/endpoint/success'
+    success_url = '/endpoint/new'
     form_class = EndpointForm
 
     def form_valid(self, form):
