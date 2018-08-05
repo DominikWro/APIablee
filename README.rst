@@ -5,6 +5,11 @@ APIable Django
     :target: https://travis-ci.org/DominikWro/APIable
     :alt: Build Status
 
+.. image:: https://coveralls.io/repos/github/DominikWro/APIable/badge.svg?branch=master
+    :target: https://coveralls.io/github/DominikWro/APIable?branch=master
+
+
+
 APIable is an app written in Django that allows you to mock any API.
 
 
