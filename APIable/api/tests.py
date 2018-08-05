@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 # Create your tests here.
 
+
 # Models test
 class EndpointModelTest(TestCase):
 
@@ -48,3 +49,11 @@ class EndpointModelTest(TestCase):
             content_type='json', encoding='utf-8',
             body="yes, this is only a test")
         self.assertEqual(str(endpoint), endpoint.url)
+
+
+# View test
+class WelcomeViewTest(TestCase):
+
+    def test_homepage(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
