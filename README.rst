@@ -12,21 +12,22 @@ Usage
 ------
 
 First, get APIable. Trust me, it's awesome::
+
     $ git clone https://github.com/DominikWro/APIable.git
 
 Production ready config is based on this article
-http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html
-
+| http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html
 Only modification:
-  Current config assumes slqlite instead of postgress
+*Current config assumes slqlite instead of postgress
 
 #1 Production
 
-    $ docker-compose build
-    $ docker-compose up
+    |$ docker-compose build
+    |$ docker-compose up
 
 
 #2  For you use only
-    $ cd /folder
-    $ python manage.py migrate
-    $ python manage.py runserver
+
+    |$ cd /folder
+    |$ python manage.py migrate
+    |$ python manage.py runserver
