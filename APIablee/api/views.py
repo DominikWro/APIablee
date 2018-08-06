@@ -46,18 +46,17 @@ class ApiResponse(View):
             request, slug, is_json, endpoint_query_match, body)
 
         HelperClass.helper_method_logging(request, response, slug)
-
+        # HelperClass.helper_method_callback() #TODO
         return response
 
     def post(self, request, slug):
-        body = helper_method_body(request.method, slug)
-        is_json = len(request.build_absolute_uri().split('?'))
         endpoint_query_match = Endpoint.objects.filter(
             Q(url=slug), Q(verb=request.method))
-        response = helper_method_response(
+        body = HelperClass.helper_method_body(endpoint_query_match)
+        is_json = len(request.build_absolute_uri().split('?'))
+        response = HelperClass.helper_method_response(
             request, slug, is_json, endpoint_query_match, body)
 
-        print(helper_method_logging())
-        print(helper_method_callback())
-
+        HelperClass.helper_method_logging(request, response, slug)
+        # HelperClass.helper_method_callback() #TODO
         return response

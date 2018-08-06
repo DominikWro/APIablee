@@ -1,6 +1,10 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.utils import timezone
 from .models import Endpoint
+import logging
+from django.core import serializers
+import json
+
 
 class HelperClass:
     @staticmethod
@@ -8,7 +12,7 @@ class HelperClass:
         try:
             body = endpoint_query_match.values()[0]['body']
 
-        except:
+        except LookupError:
             body = {'body': 'not defined'}
 
         return body
@@ -19,37 +23,45 @@ class HelperClass:
         try:
             response_code = endpoint_query_match.values()[0]['response_code']
             charset = endpoint_query_match.values()[0]['encoding']
+            print(charset)
             content_type = endpoint_query_match.values()[0]['content_type']
-        except:
+        except LookupError:
             response = JsonResponse({'Endpoint': 'Not Available'})
 
         if is_json == 2 and endpoint_query_match:
-            response = HttpResponse("%s" % body.encode('utf-16'))
-            print('json')
+            response = HttpResponse(
+                json.dumps(body, ensure_ascii=False),
+                status=response_code,
+                charset=charset,
+                content_type="application/json")
+
+            return response
 
         elif endpoint_query_match:
-            # print(body)
             response = HttpResponse(
                 body.encode(charset),
                 status=response_code,
                 charset=charset,
                 content_type=content_type)
-            # print(endpoint_query_match.values()[0]['response_code'])
 
         return response
 
     @staticmethod
     def helper_method_logging(request, response, slug):
-        print(
-            'INFO',
-            timezone.now(),
+        logging.basicConfig(
+            filename='file.log',
+            format='%(asctime)s %(message)s',
+            level=logging.INFO)
+        logging.info('INFO {0} {1} {2} {3} {4}'.format(
             slug,
             request.method,
             response.status_code,
             response.charset,
-            response.content)
-        return "Logging"
+            response.content))
+
+        return True
 
     @staticmethod
     def helper_method_callback():
+        # TODO
         return True
