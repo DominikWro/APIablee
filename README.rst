@@ -36,12 +36,13 @@ Only modification:
   Current config SQLite instead of PostgreSQL
 
 Production::
+
     $ git clone https://github.com/DominikWro/APIablee.git APIablee
     $ cd APIablee
     $ docker-compose build
     $ docker-compose up
 
-    If you wish to use sqlite for trying with docker-compose
+    If you wish to use sqlite for trying with docker-compose::
 
     $ docker ps
     $ docker exec -t -i CONTAINER ID bash
