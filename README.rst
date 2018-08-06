@@ -18,22 +18,34 @@ Usage
 
 First, get APIable. Trust me, it's awesome::
 
-    $ git clone https://github.com/DominikWro/APIable.git .
+    $ git clone https://github.com/DominikWro/APIablee.git APIablee
+    $ python -m venv venv
+    $ source venv/bin/activate
+    $ cd APIablee
+    $ pip install -r requirements.txt
+    $ cd APIablee
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+    $ python manage.py createsuperuser
+    $ python manage.py runserver
 
 Production ready config is based on this article
 http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html
 
 Only modification:
-  Current config assumes slqlite instead of postgress
+  Current config SQLite instead of PostgreSQL
 
 Production::
-
+    $ git clone https://github.com/DominikWro/APIablee.git APIablee
+    $ cd APIablee
     $ docker-compose build
     $ docker-compose up
-;
 
-For your use only::
+    If you wish to use sqlite for trying with docker-compose
 
-    $ cd /app_folder
+    $ docker ps
+    $ docker exec -t -i CONTAINER ID bash
+    $ cd APIablee
+    $ python manage.py makemigrations
     $ python manage.py migrate
-    $ python manage.py runserver
+    $ python manage.py createsuperuser
