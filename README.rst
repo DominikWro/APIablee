@@ -42,7 +42,7 @@ Production::
     $ docker-compose build
     $ docker-compose up
 
-    If you wish to use sqlite for trying with docker-compose::
+If you wish to use SQLite with docker-compose to run migrations do::
 
     $ docker ps
     $ docker exec -t -i CONTAINER ID bash
