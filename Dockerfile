@@ -7,7 +7,7 @@ COPY Pipfile Pipfile.lock /opt/services/djangoapp/src/
 RUN pip install pipenv && pipenv install --system
 
 COPY . /opt/services/djangoapp/src
-RUN cd APIable && python manage.py collectstatic --no-input  # <-- here
+RUN cd APIablee && python manage.py collectstatic --no-input  # <-- here
 
 EXPOSE 8000
-CMD ["gunicorn", "--chdir", "APIable", "--bind", ":8000", "APIable.wsgi:application"]
+CMD ["gunicorn", "--chdir", "APIablee", "--bind", ":8000", "APIablee.wsgi:application"]
